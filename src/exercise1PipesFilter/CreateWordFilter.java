@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class createWordFilter extends DataTransformationFilter2<String, List<String>> {
+public class CreateWordFilter extends DataTransformationFilter2<String, List<String>> {
 
-    public createWordFilter(Writeable<List<String>> output) throws InvalidParameterException {
+    public CreateWordFilter(Writeable<List<String>> output) throws InvalidParameterException {
         super(output);
     }
 
