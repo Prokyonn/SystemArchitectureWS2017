@@ -57,25 +57,32 @@ public class Main {
         }
 
         WriteIndexFileSink writer = new WriteIndexFileSink();
+
         SimplePipe pipeA = new SimplePipe(writer);
         SortFilter sortFilter = new SortFilter(pipeA);
+
         SimplePipe pipeB = new SimplePipe((Writeable) sortFilter);
         FrequentWordFilter frequentWordFilter = new FrequentWordFilter(pipeB, map);
+
         SimplePipe pipeC = new SimplePipe((Writeable) frequentWordFilter);
         CircularShiftFilter circularShiftFilter = new CircularShiftFilter(pipeC);
+
         SimplePipe pipeD = new SimplePipe((Writeable) circularShiftFilter);
         SplitLineFilter splitLineFilter = new SplitLineFilter(pipeD);
+
         //SimplePipe pipeE = new SimplePipe((Writeable) splitLineFilter);
 
         WriteStoryFileSink writer2 = new WriteStoryFileSink();
 
         DoubleExitPushPipe doubleExitPushPipe = new DoubleExitPushPipe(splitLineFilter, writer2);
+        CreateAlignementFilter createAlignementFilter = new CreateAlignementFilter(doubleExitPushPipe, 66, Alignment.Center);
 
-        CreateAlignementFilter createAlignementFilter = new CreateAlignementFilter(doubleExitPushPipe, 150, Alignment.Right);
         SimplePipe pipeH = new SimplePipe((Writeable) createAlignementFilter);
-        CreateLineFilter createLineFilter = new CreateLineFilter(pipeH, 150);
+        CreateLineFilter createLineFilter = new CreateLineFilter(pipeH, 66);
+
         SimplePipe pipeG = new SimplePipe((Writeable) createLineFilter);
         CreateWordFilter createWordFilter = new CreateWordFilter(pipeG);
+
         SimplePipe pipeF = new SimplePipe((Writeable) createWordFilter);
         Source source = new ReadCharacterSource(pipeF, alice);
         source.run();
