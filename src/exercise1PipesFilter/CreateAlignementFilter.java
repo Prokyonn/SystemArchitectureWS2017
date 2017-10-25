@@ -16,23 +16,47 @@ public class CreateAlignementFilter extends DataTransformationFilter2<StringBuil
     }
 
     @Override
-    protected String process(StringBuilder entity) {
-        String returnValue = "";
+    protected String process(StringBuilder builder) {
+        //Remove all spaces and then begin with alignment
+        String line = builder.toString().trim();
+
         switch (_alignment){
             case Left:
+                line = alignLeft(line);
                 break;
             case Right:
-                returnValue = alignRight(entity);
+                line = alignRight(line);
                 break;
             case Center:
+                line = alignCenter(line);
                 break;
         }
-        return returnValue;
+        return line;
     }
 
-    private String alignRight(StringBuilder builder){
+    private String alignRight(String line){
+        StringBuilder builder = new StringBuilder(line);
         while(builder.length() < _lineLength){
-            builder.append(" ", 0, 1);
+            builder.insert(0,' ');
+        }
+        return builder.toString();
+    }
+
+    private String alignLeft(String line){
+        StringBuilder builder = new StringBuilder(line);
+        while(builder.length() < _lineLength){
+            builder.append(' ');
+        }
+        return builder.toString();
+    }
+
+    private String alignCenter(String line){
+        StringBuilder builder = new StringBuilder(line);
+        while(builder.length() < _lineLength){
+            builder.insert(0,' ');
+            if(builder.length() < _lineLength) {
+                builder.append(' ');
+            }
         }
         return builder.toString();
     }
