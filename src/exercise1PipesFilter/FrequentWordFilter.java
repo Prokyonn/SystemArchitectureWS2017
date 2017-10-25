@@ -19,7 +19,7 @@ public class FrequentWordFilter extends DataTransformationFilter1<List<String>> 
     protected void process(List<String> entity) {
         List<String> toRemove = new LinkedList<>();
         for(String line:entity){
-            if(_frequentWords.containsKey(line.split(" ")[0].toLowerCase().replace("\"",""))){
+            if(_frequentWords.containsKey(line.trim().split(" ")[0].toLowerCase().replace("\"",""))){
                 toRemove.add(line);
             }
         }
