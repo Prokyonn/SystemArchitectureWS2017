@@ -1,9 +1,7 @@
 package exercise1PipesFilter;
 
-import pmp.filter.AbstractFilter;
+import pmp.filter.DataCompositionFilter;
 import pmp.filter.DataTransformationFilter2;
-import pmp.filter.DataTransformationFilter3;
-import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
@@ -12,18 +10,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CreateWordFilter extends DataTransformationFilter2<String, List<String>> {
+public class CreateWordFilter extends DataCompositionFilter<Character, StringBuilder> {
 
-    public CreateWordFilter(Writeable<List<String>> output) throws InvalidParameterException {
+    public CreateWordFilter(Writeable<StringBuilder> output) throws InvalidParameterException {
         super(output);
     }
 
     @Override
-    protected ArrayList<String> process(String entity) {
-        ArrayList<String> list = new ArrayList<>();
-        String[] words = entity.split(" ");
-        Arrays.stream(words).forEach(item -> list.add(item));
+    protected boolean fillEntity(Character nextVal, StringBuilder entity) {
+        if (nextVal != ' ' && nextVal != '\n' && nextVal != '\t' && nextVal != '\r') {
+            entity.append(nextVal);
+            return false;
+        }
+        return true;
+    }
 
-        return list;
+    @Override
+    protected StringBuilder getNewEntityObject() {
+        return new StringBuilder();
+    }
+
+    @Override
+    public void write(Character value) throws StreamCorruptedException {
+        super.write(value);
     }
 }
