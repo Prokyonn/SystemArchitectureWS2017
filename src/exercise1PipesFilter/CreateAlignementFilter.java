@@ -21,13 +21,13 @@ public class CreateAlignementFilter extends DataTransformationFilter2<StringBuil
         String line = builder.toString().trim();
 
         switch (_alignment){
-            case Left:
+            case left:
                 line = alignLeft(line);
                 break;
-            case Right:
+            case right:
                 line = alignRight(line);
                 break;
-            case Center:
+            case center:
                 line = alignCenter(line);
                 break;
         }
