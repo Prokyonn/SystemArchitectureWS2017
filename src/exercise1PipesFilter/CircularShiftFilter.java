@@ -15,15 +15,17 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<String>,
 
     @Override
     protected List<String> process(List<String> entity) {
+
         List<String> words = entity;
         List<String> shiftedLines = new ArrayList<>();
-        String firstWord = words.get(0);
+        if(!entity.isEmpty()) {
+            String firstWord = words.get(0);
 
-        lineCounter++;
-        do {
-            shiftedLines.add(shift(words)+" "+lineCounter);
-        } while (!firstWord.equals(words.get(0)));
-
+            lineCounter++;
+            do {
+                shiftedLines.add(shift(words) + "\t" + lineCounter);
+            } while (!firstWord.equals(words.get(0)));
+        }
         return shiftedLines;
     }
 

@@ -22,7 +22,20 @@ public class SplitLineFilter extends DataTransformationFilter2<String, List<Stri
     protected ArrayList<String> process(String entity) {
         ArrayList<String> list = new ArrayList<>();
         String[] words = entity.split(" ");
-        Arrays.stream(words).forEach(item -> list.add(item));
+        String regex = "([\\W\\d_])+";
+
+//        for(String s : words){
+//            s.replaceAll(regex,"");
+//            if(!s.isEmpty()){
+//                list.add(s);
+//            }
+//        }
+
+        Arrays.stream(words).forEach(item -> {
+            item.replaceAll(regex, "");
+            if (!item.isEmpty())
+                list.add(item);
+        });
 
         return list;
     }
