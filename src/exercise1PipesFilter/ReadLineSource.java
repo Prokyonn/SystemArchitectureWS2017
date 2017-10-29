@@ -7,12 +7,11 @@ import java.io.*;
 import java.security.InvalidParameterException;
 
 public class ReadLineSource extends Source<String> {
-    private String path;
     private BufferedReader br;
 
     public ReadLineSource(Writeable<String> output, String filePath) throws InvalidParameterException {
         super(output);
-        path = filePath;
+        String path = filePath;
         try {
             br = new BufferedReader(new FileReader(path));
         } catch (FileNotFoundException e) {

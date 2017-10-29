@@ -16,7 +16,7 @@ public class SortFilter extends DataCompositionFilter<List<String>, List<String>
     @Override
     protected boolean fillEntity(List<String> nextVal, List<String> entity) {
         if (nextVal != null) {
-            nextVal.stream().forEach(item -> entity.add(item));
+            entity.addAll(nextVal);
             return false;
         } else {
             entity.sort(null);

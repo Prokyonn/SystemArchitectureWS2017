@@ -25,8 +25,6 @@ public class FrequentWordFilter extends DataTransformationFilter1<List<String>> 
             }
         }
 
-        for (String lineToRemove : toRemove) {
-            entity.remove(lineToRemove);
-        }
+        entity.removeAll(toRemove);
     }
 }

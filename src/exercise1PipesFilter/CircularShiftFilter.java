@@ -35,7 +35,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<String>,
         words.add(word);
 
         StringBuilder sb = new StringBuilder();
-        words.forEach(x -> sb.append(x + " "));
+        words.forEach(x -> sb.append(x).append(" "));
 
         return sb.toString();
     }
