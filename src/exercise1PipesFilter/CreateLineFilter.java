@@ -21,6 +21,7 @@ public class CreateLineFilter extends DataCompositionFilter<StringBuilder, Strin
     protected boolean fillEntity(StringBuilder nextVal, StringBuilder entity) {
         if (nextVal != null) {
             if (entity.length() + 1 + nextVal.length() <= _lineLength) {
+                if (nextVal.length() > 0)
                     entity.append(" " + nextVal);
                 return false;
             } else {
