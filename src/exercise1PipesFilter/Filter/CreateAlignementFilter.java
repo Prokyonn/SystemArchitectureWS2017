@@ -1,11 +1,12 @@
-package exercise1PipesFilter;
+package exercise1PipesFilter.Filter;
 
+import exercise1PipesFilter.Alignment;
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Writeable;
 
 import java.security.InvalidParameterException;
 
-public class CreateAlignementFilter extends DataTransformationFilter2<StringBuilder,String> {
+public class CreateAlignementFilter extends DataTransformationFilter2<StringBuilder, String> {
     private int _lineLength = 0;
     private Alignment _alignment;
 
@@ -20,7 +21,7 @@ public class CreateAlignementFilter extends DataTransformationFilter2<StringBuil
         //Remove all spaces and then begin with alignment
         String line = builder.toString().trim();
 
-        switch (_alignment){
+        switch (_alignment) {
             case left:
                 line = alignLeft(line);
                 break;
@@ -34,27 +35,27 @@ public class CreateAlignementFilter extends DataTransformationFilter2<StringBuil
         return line;
     }
 
-    private String alignRight(String line){
+    private String alignRight(String line) {
         StringBuilder builder = new StringBuilder(line);
-        while(builder.length() < _lineLength){
-            builder.insert(0,' ');
+        while (builder.length() < _lineLength) {
+            builder.insert(0, ' ');
         }
         return builder.toString();
     }
 
-    private String alignLeft(String line){
+    private String alignLeft(String line) {
         StringBuilder builder = new StringBuilder(line);
-        while(builder.length() < _lineLength){
+        while (builder.length() < _lineLength) {
             builder.append(' ');
         }
         return builder.toString();
     }
 
-    private String alignCenter(String line){
+    private String alignCenter(String line) {
         StringBuilder builder = new StringBuilder(line);
-        while(builder.length() < _lineLength){
-            builder.insert(0,' ');
-            if(builder.length() < _lineLength) {
+        while (builder.length() < _lineLength) {
+            builder.insert(0, ' ');
+            if (builder.length() < _lineLength) {
                 builder.append(' ');
             }
         }

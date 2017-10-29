@@ -1,4 +1,4 @@
-package exercise1PipesFilter;
+package exercise1PipesFilter.Sink;
 
 import pmp.filter.Sink;
 

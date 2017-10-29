@@ -1,5 +1,10 @@
 package exercise1PipesFilter;
 
+import exercise1PipesFilter.Filter.*;
+import exercise1PipesFilter.Sink.WriteIndexFileSink;
+import exercise1PipesFilter.Sink.WriteStoryFileSink;
+import exercise1PipesFilter.Source.ReadCharacterSource;
+import exercise1PipesFilter.Source.ReadLineSource;
 import pmp.filter.Source;
 import pmp.interfaces.Writeable;
 import pmp.pipes.SimplePipe;

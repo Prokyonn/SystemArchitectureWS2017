@@ -1,4 +1,4 @@
-package exercise1PipesFilter;
+package exercise1PipesFilter.Filter;
 
 import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Writeable;
