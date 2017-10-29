@@ -24,13 +24,6 @@ public class SplitLineFilter extends DataTransformationFilter2<String, List<Stri
         String[] words = entity.split(" ");
         String regex = "([\\W\\d_])+";
 
-//        for(String s : words){
-//            s.replaceAll(regex,"");
-//            if(!s.isEmpty()){
-//                list.add(s);
-//            }
-//        }
-
         Arrays.stream(words).forEach(item -> {
             item.replaceAll(regex, "");
             if (!item.isEmpty())
