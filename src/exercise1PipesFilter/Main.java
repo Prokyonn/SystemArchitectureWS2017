@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    private static final String ALICE_PATH = "data/aliceInWonderland.txt";
+    private static final String ALICE_PATH = Main.class.getClassLoader().getResource("./exercise1PipesFilter/data/aliceInWonderland.txt").getPath();
+    private static final String FREQUENT_WORDS_PATH = Main.class.getClassLoader().getResource("./exercise1PipesFilter/data/frequentEnglishWords.txt").getPath();
     private static final int FREQUENT_WORDS_BOUND = 300;
 
     public static void main(String[] args) {
@@ -142,7 +143,7 @@ public class Main {
     }
 
     private static void fillHashMap(HashMap<String, Integer> map, int bound) {
-        File frequentWords = new File("data/frequentEnglishWords.txt");
+        File frequentWords = new File(FREQUENT_WORDS_PATH);
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(frequentWords));
