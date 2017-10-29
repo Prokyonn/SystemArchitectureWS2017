@@ -3,7 +3,6 @@ package exercise1PipesFilter;
 import pmp.filter.Sink;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.List;
 
 public class WriteIndexFileSink extends Sink<List<String>> {
@@ -11,7 +10,7 @@ public class WriteIndexFileSink extends Sink<List<String>> {
 
     public WriteIndexFileSink() {
         try {
-            os = new FileOutputStream("AliceIndex.txt");
+            os = new FileOutputStream("Index.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -19,7 +18,7 @@ public class WriteIndexFileSink extends Sink<List<String>> {
 
     @Override
     public void write(List<String> value) throws StreamCorruptedException {
-        if (value != null)
+        if (value != null) {
             try {
                 for (String line : value) {
                     os.write(line.getBytes());
@@ -29,6 +28,7 @@ public class WriteIndexFileSink extends Sink<List<String>> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
 
     }
 }

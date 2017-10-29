@@ -3,14 +3,13 @@ package exercise1PipesFilter;
 import pmp.filter.Sink;
 
 import java.io.*;
-import java.util.List;
 
 public class WriteStoryFileSink extends Sink<String> {
     OutputStream os = null;
 
     public WriteStoryFileSink() {
         try {
-            os = new FileOutputStream("Alice.txt");
+            os = new FileOutputStream("Book.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -18,7 +17,7 @@ public class WriteStoryFileSink extends Sink<String> {
 
     @Override
     public void write(String value) throws StreamCorruptedException {
-        if (value != null)
+        if (value != null) {
             try {
                 os.write(value.getBytes());
                 os.write("\n".getBytes());
@@ -26,5 +25,6 @@ public class WriteStoryFileSink extends Sink<String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
     }
 }

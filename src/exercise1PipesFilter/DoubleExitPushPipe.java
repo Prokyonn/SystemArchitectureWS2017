@@ -2,7 +2,6 @@ package exercise1PipesFilter;
 
 import pmp.interfaces.IOable;
 import pmp.interfaces.Writeable;
-import pmp.pipes.SimplePipe;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.StreamCorruptedException;
@@ -25,8 +24,9 @@ public class DoubleExitPushPipe implements IOable<String, String> {
 
     @Override
     public void write(String value) throws StreamCorruptedException {
-        if ( _out1 == null || _out2 == null)
+        if (_out1 == null || _out2 == null) {
             throw new InvalidParameterException("output filter can't be null!");
+        }
         _out1.write(value);
         _out2.write(value);
     }

@@ -4,7 +4,6 @@ import pmp.filter.DataCompositionFilter;
 import pmp.interfaces.Writeable;
 
 import java.security.InvalidParameterException;
-import java.util.LinkedList;
 
 public class CreateLineFilter extends DataCompositionFilter<StringBuilder, StringBuilder> {
 

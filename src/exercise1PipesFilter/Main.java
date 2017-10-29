@@ -1,14 +1,14 @@
 package exercise1PipesFilter;
 
-import jdk.internal.util.xml.impl.Input;
 import pmp.filter.Source;
 import pmp.interfaces.Writeable;
 import pmp.pipes.SimplePipe;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -24,8 +24,9 @@ public class Main {
         System.out.println("Enter [a] for exercise a or [b] for excercise b.");
         input = null;
         do {
-            if (input != null)
+            if (input != null) {
                 System.out.println("Wrong input, please enter [a] or [b].");
+            }
             input = scanner.nextLine();
         } while (!(input.equalsIgnoreCase("a") || input.equalsIgnoreCase("b")));
         input = input.toLowerCase();
@@ -152,8 +153,9 @@ public class Main {
                 if (str.length > 1) {
                     try {
                         int number = Integer.parseInt(str[2]);
-                        if (number > bound)
+                        if (number > bound) {
                             map.put(str[1], Integer.parseInt(str[2]));
+                        }
                     } catch (NumberFormatException e) {
                         //do Nothing
                     }

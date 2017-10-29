@@ -1,14 +1,10 @@
 package exercise1PipesFilter;
 
 import pmp.filter.DataCompositionFilter;
-import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Writeable;
 
 import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class CreateWordFilter extends DataCompositionFilter<Character, StringBuilder> {
 

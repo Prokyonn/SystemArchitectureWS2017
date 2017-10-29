@@ -1,7 +1,6 @@
 package exercise1PipesFilter;
 
 import pmp.filter.DataCompositionFilter;
-import pmp.filter.DataTransformationFilter2;
 import pmp.interfaces.Writeable;
 
 import java.security.InvalidParameterException;

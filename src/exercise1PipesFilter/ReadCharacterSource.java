@@ -24,10 +24,10 @@ public class ReadCharacterSource extends Source<Character> {
     public Character read() throws StreamCorruptedException {
         try {
             int charValue = br.read();
-            if(charValue == -1){
+            if (charValue == -1) {
                 return null;
             } else {
-                return (char)charValue;
+                return (char) charValue;
             }
 
         } catch (IOException e) {

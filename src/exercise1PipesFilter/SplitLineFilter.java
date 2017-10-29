@@ -1,12 +1,8 @@
 package exercise1PipesFilter;
 
-import pmp.filter.AbstractFilter;
 import pmp.filter.DataTransformationFilter2;
-import pmp.filter.DataTransformationFilter3;
-import pmp.interfaces.Readable;
 import pmp.interfaces.Writeable;
 
-import java.io.StreamCorruptedException;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,8 +22,9 @@ public class SplitLineFilter extends DataTransformationFilter2<String, List<Stri
 
         Arrays.stream(words).forEach(item -> {
             item.replaceAll(regex, "");
-            if (!item.isEmpty())
+            if (!item.isEmpty()) {
                 list.add(item);
+            }
         });
 
         return list;

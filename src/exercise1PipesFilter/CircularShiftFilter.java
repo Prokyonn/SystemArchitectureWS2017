@@ -7,8 +7,9 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CircularShiftFilter extends DataTransformationFilter2<List<String>,List<String>> {
+public class CircularShiftFilter extends DataTransformationFilter2<List<String>, List<String>> {
     private int lineCounter = 0;
+
     public CircularShiftFilter(Writeable<List<String>> output) throws InvalidParameterException {
         super(output);
     }
@@ -18,7 +19,7 @@ public class CircularShiftFilter extends DataTransformationFilter2<List<String>,
 
         List<String> words = entity;
         List<String> shiftedLines = new ArrayList<>();
-        if(!entity.isEmpty()) {
+        if (!entity.isEmpty()) {
             String firstWord = words.get(0);
 
             lineCounter++;
